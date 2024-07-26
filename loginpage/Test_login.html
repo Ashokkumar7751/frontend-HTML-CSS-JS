@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Add custom styles here */
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <span id="formTitle">Login</span>
+          </div>
+          <div class="card-body">
+            <form id="loginForm">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password">
+              </div>
+              <!-- <button onclick="calculate()">Calculate</button> -->
+              <button type="submit" onclick="vad()"  class="btn btn-primary btn-block">Login</button>
+            </form>
+            <form id="signupForm" style="display: none;">
+              <div class="form-group">
+                <label for="signupUsername">Username</label>
+                <input type="text" class="form-control" id="signupUsername" placeholder="Enter username">
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input type="password" class="form-control" id="signupPassword" placeholder="Enter password">
+              </div>
+              <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between">
+              <a href="#" id="forgotPasswordLink" class="text-danger" data-toggle="modal" data-target="#resetPasswordModal">Forgot Password?</a>
+              <a href="#" id="toggleFormLink" class="text-success">Sign Up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reset Password Modal -->
+  <div class="modal fade" id="resetPasswordModal" tabindex="-1" role="dialog" aria-labelledby="resetPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resetPasswordModalLabel">Reset Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="resetPasswordForm">
+            <div class="form-group">
+              <label for="resetEmail">Email Address</label>
+              <input type="email" class="form-control" id="resetEmail" placeholder="Enter your email address">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Toggle between login and signup forms
+      $('#toggleFormLink').click(function(e) {
+        e.preventDefault(); // Prevent default link behavior
+
+        $('#loginForm').toggle();
+        $('#signupForm').toggle();
+
+        var formTitle = $('#formTitle');
+        if (formTitle.text() === "Login") {
+          formTitle.text("Sign Up");
+          $('#toggleFormLink').text("Login");
+        } else {
+          formTitle.text("Login");
+          $('#toggleFormLink').text("Sign Up");
+        }
+      });
+
+      // Handle signup form submission
+      $('#signupForm').submit(function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Get signup details
+        var username = $('#signupUsername').val();
+        var password = $('#signupPassword').val();
+
+        // Perform registration
+        registerUser(username, password);
+      });
+
+      // Function to register user
+      function registerUser(username, password) {
+        // Implement registration logic here
+        // For demonstration purposes, just logging signup details
+        console.log("Username: " + username + ", Password: " + password);
+        alert("Successfully registered!");
+      }
+
+      // Handle forgot password link click
+      $('#forgotPasswordLink').click(function(e) {
+        e.preventDefault(); // Prevent default link behavior
+      });
+
+      // Handle reset password form submission
+      $('#resetPasswordForm').submit(function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Get reset password details
+        var email = $('#resetEmail').val();
+
+        // Perform reset password
+        resetPassword(email);
+      });
+
+      // Function to reset password
+      function resetPassword(email) {
+        // Implement reset password logic here
+        // For demonstration purposes, just logging reset email
+        console.log("Reset Email: " + email);
+        alert("Reset password email sent!");
+      }
+      
+    });
+
+    
+    function vad(){
+        alert("successfully created user")
+    }
+
+  </script>
+</body>
+</html>
